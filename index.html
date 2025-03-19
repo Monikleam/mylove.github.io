@@ -1,0 +1,239 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   FOR MY BABY
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .hidden { display: none; }
+    .swipe-card { transition: transform 0.5s ease, opacity 0.5s ease; }
+  </style>
+ </head>
+ <body class="bg-black text-white">
+  <!-- Passcode Screen -->
+  <div class="flex items-center justify-center h-screen bg-cover bg-center" id="passcode-screen" style="background-image: url('images/2.png');">
+   <div class="text-center">
+    <div class="text-6xl font-bold">
+     04:49
+     <span class="text-xl">
+      PM
+     </span>
+    </div>
+    <div class="text-lg mt-2">
+     Wed, Mar 19
+    </div>
+    <div class="grid grid-cols-3 gap-4 mt-8">
+     <!-- Number Buttons -->
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(1)">
+      1
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(2)">
+      2
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(3)">
+      3
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(4)">
+      4
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(5)">
+      5
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(6)">
+      6
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(7)">
+      7
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(8)">
+      8
+     </button>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(9)">
+      9
+     </button>
+     <div>
+     </div>
+     <button class="w-16 h-16 bg-gray-200 text-gray-900 rounded-full text-2xl" onclick="enterDigit(0)">
+      0
+     </button>
+     <div>
+     </div>
+    </div>
+    <div class="mt-8 text-sm">
+     Verify your fingerprint or swipe up to unlock
+    </div>
+    <div class="mt-4 text-lg hidden" id="message">
+    </div>
+   </div>
+  </div>
+  <!-- Tinder Swipe Screen -->
+  <div class="hidden" id="tinder-screen">
+   <div class="max-w-sm mx-auto bg-black">
+    <!-- Header -->
+    <div class="flex justify-between items-center p-4">
+     <i class="fab fa-tinder text-red-500 text-2xl">
+     </i>
+     <div class="flex space-x-4">
+      <i class="fas fa-bell text-gray-400 text-xl">
+      </i>
+      <i class="fas fa-bolt text-purple-500 text-xl">
+      </i>
+     </div>
+    </div>
+    <!-- Progress Bar -->
+    <div class="h-1 bg-gray-700 mx-4 rounded-full overflow-hidden">
+     <div class="h-full bg-gray-400 w-1/4">
+     </div>
+    </div>
+    <!-- Profile Image -->
+    <div class="relative mt-4 swipe-card" id="profile-card">
+     <img alt="Profile picture of a person" class="w-full h-auto rounded-lg" src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/484891049_2154796074972812_1942398943086216078_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHSpnrEj9_wunpuDCF7OE-eXEK-duy00kdcQr527LTSR_j4lAK1WC3ZDE6SApsG_mgwvZapMU588wgFq6vxJkE0&_nc_ohc=-2Tfn-xZzRIQ7kNvgHEcPqr&_nc_oc=AdnjQnxgh7hvlRUyEloOJLTHMACkRdVx-kbp0Hw9Y-hUO8Ap3AIWjhU87lHvn3Xa20I&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1wEcbRU8yGwNr7fWoWm3IfF8Vy2ao0QGUz3AGFRmD3U8cw&oe=68020B6C"/>
+     <span class="absolute bottom-4 left-4 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+      Recently Active
+     </span>
+    </div>
+    <!-- Profile Info -->
+    <div class="p-4">
+     <h1 class="text-2xl font-bold">
+      monic
+      <span class="text-xl font-normal">
+       21
+      </span>
+     </h1>
+     <p class="mt-2 text-sm">
+      <i class="fas fa-quote-left">
+      </i>
+      bading.
+     </p>
+    </div>
+    <!-- Action Buttons -->
+    <div class="flex justify-around items-center py-4">
+     <i class="fas fa-times text-2xl text-pink-500 cursor-pointer" id="swipe-left">
+     </i>
+     <i class="fas fa-heart text-2xl text-green-500 cursor-pointer" id="swipe-right">
+     </i>
+    </div>
+   </div>
+  </div>
+  <!-- Match Screen -->
+  <div class="hidden fixed inset-0 bg-black bg-opacity-75 flex flex-col items-center justify-center text-center" id="match-screen">
+   <h1 class="text-4xl font-bold text-red-500">
+    IT'S A MATCH!
+   </h1>
+   <div class="flex mt-4">
+    <img alt="Your profile picture" class="w-24 h-24 rounded-full border-4 border-white" src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/484127079_3619386758361437_5979802439671253059_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGTFJWkBhFdapAu-3VN-cmdWn9LfuC66vhaf0t-4Lrq-KiC8UZOxijQ5wkHZB5wzJ4-L3P-GG4xtO1176rKjR9L&_nc_ohc=wUgWVtra0V0Q7kNvgG8Ufmi&_nc_oc=AdksEYaNxnR9eZL7Jy2CNypc7TPrQGY730ShO6ee7wnthz6tD2w1uY4lQ5czEMkU8TU&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1wG_ABtwLdo2VCiN1Ns7oFjeBiQSDQJLCVS0tP5PRHfaww&oe=680200E5"/>
+    <img alt="Matched profile picture" class="w-24 h-24 rounded-full border-4 border-white ml-4" src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t1.15752-9/484891049_2154796074972812_1942398943086216078_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHSpnrEj9_wunpuDCF7OE-eXEK-duy00kdcQr527LTSR_j4lAK1WC3ZDE6SApsG_mgwvZapMU588wgFq6vxJkE0&_nc_ohc=-2Tfn-xZzRIQ7kNvgHEcPqr&_nc_oc=AdnjQnxgh7hvlRUyEloOJLTHMACkRdVx-kbp0Hw9Y-hUO8Ap3AIWjhU87lHvn3Xa20I&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&oh=03_Q7cD1wEcbRU8yGwNr7fWoWm3IfF8Vy2ao0QGUz3AGFRmD3U8cw&oe=68020B6C"/>
+   </div>
+   <button class="mt-8 bg-white text-black px-4 py-2 rounded" onclick="startChat()">
+    Start Chat
+   </button>
+  </div>
+  <!-- Chat Screen -->
+  <div class="hidden fixed inset-0 bg-black flex flex-col" id="chat-screen">
+   <div class="flex-1 p-4 overflow-y-auto">
+    <div class="text-sm text-gray-400">
+     You matched with monic
+    </div>
+    <div id="chat-messages">
+     <div class="bg-blue-500 text-white p-2 rounded-lg max-w-xs mt-4">
+      hiiii
+     </div>
+    </div>
+   </div>
+   <div class="p-4 border-t border-gray-700">
+    <input class="w-full p-2 bg-gray-800 text-white rounded-lg" id="chat-input" placeholder="Type a message..."/>
+   </div>
+  </div>
+  <!-- Envelope Screen -->
+  <div class="hidden fixed inset-0 bg-cover bg-center flex items-center justify-center" id="envelope-screen" style="background-image: url('images/bg2.png');">
+   <div class="relative w-64 h-40">
+    <img alt="Envelope image" class="w-full h-full" src="images/red.png"/>
+    <div class="absolute inset-0 flex items-center justify-center">
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="GIF of a heart" class="w-16 h-16 mx-auto" src="https://i.pinimg.com/originals/af/d5/90/afd59076d2f49760050ab0c223869f54.gif"/>
+      <p class="mt-4 text-center text-black">
+        Hello, my love.💖
+      alam ko na po nasa isip mo, you think too much na po itong ginagawa ko, no? pero you know, love, uulitin ko po sayo—kulang pa po ito compared sa mga binibigay mo sa akin, love. you give me so much joy, care, and love, and this is my small way of showing how much I appreciate you.
+      i hope napasaya kita by doing this love. you make me feel so special and cared for. kaya gusto ko rin pong iparamdam sa’yo. lagi mong tandaan, love, mahal na mahal kita, and I will always do my best para mapasaya ka at maipakita kung gaano ka kahalaga sakin. i will wait for you no matter what. i love you. and i love doing this to you. ❤️</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   const correctPasscode = "021525";
+    let enteredPasscode = "";
+
+    function enterDigit(digit) {
+      enteredPasscode += digit;
+      if (enteredPasscode.length === 6) {
+        checkPasscode();
+      }
+    }
+
+    function checkPasscode() {
+      const messageElement = document.getElementById("message");
+      if (enteredPasscode === correctPasscode) {
+        messageElement.textContent = "Yey! you remembered!";
+        setTimeout(() => {
+          document.getElementById("passcode-screen").classList.add("hidden");
+          document.getElementById("tinder-screen").classList.remove("hidden");
+        }, 1000);
+      } else {
+        messageElement.textContent = "You dont remember the day we talked?";
+      }
+      messageElement.classList.remove("hidden");
+      enteredPasscode = "";
+    }
+
+    document.getElementById('swipe-left').addEventListener('click', () => {
+      const profileCard = document.getElementById('profile-card');
+      profileCard.style.transform = 'translateX(-100%)';
+      profileCard.style.opacity = '0';
+      setTimeout(() => {
+        profileCard.style.transform = 'translateX(0)';
+        profileCard.style.opacity = '1';
+      }, 500);
+    });
+
+    document.getElementById('swipe-right').addEventListener('click', () => {
+      document.getElementById('match-screen').classList.remove('hidden');
+    });
+
+    function startChat() {
+      document.getElementById('match-screen').classList.add('hidden');
+      document.getElementById('chat-screen').classList.remove('hidden');
+    }
+
+    document.getElementById('chat-input').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        const input = document.getElementById('chat-input');
+        const userMessage = input.value.trim();
+        if (userMessage) {
+          const chatMessages = document.getElementById('chat-messages');
+          const userBubble = document.createElement('div');
+          userBubble.className = 'bg-gray-700 text-white p-2 rounded-lg max-w-xs mt-4 ml-auto';
+          userBubble.textContent = userMessage;
+          chatMessages.appendChild(userBubble);
+          input.value = '';
+
+          setTimeout(() => {
+            const autoReply = document.createElement('div');
+            autoReply.className = 'bg-blue-500 text-white p-2 rounded-lg max-w-xs mt-4';
+            autoReply.textContent = "ako pala type mo? nice taste by the way HAAHHAHAHAH";
+            chatMessages.appendChild(autoReply);
+
+            setTimeout(() => {
+              document.getElementById('chat-screen').classList.add('hidden');
+              document.getElementById('envelope-screen').classList.remove('hidden');
+            }, 2000);
+          }, 1000);
+        }
+      }
+    });
+  </script>
+ </body>
+</html>
